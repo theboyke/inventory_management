@@ -1,0 +1,23 @@
+{% extends "_layout.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+{% endblock %}
+{% block store %}
+<h1>Create a store</h1>
+<form action="{{url_for('create_store')}}" method="POST">
+  Store name: <br>
+  <input type="text" name="name_user_input" placeholder="Insert store name">
+  <button type="submit">SUBMIT</button><br>
+  </form>
+
+
+  
+{% endblock %}
