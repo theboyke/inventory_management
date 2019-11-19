@@ -3,32 +3,33 @@
 {% with messages = get_flashed_messages() %}
   {% if messages %}
     <ul class=flashes>
-    {% for message in messages %}
+      {% for message in messages %}
       <li>{{ message }}</li>
-    {% endfor %}
+      {% endfor %}
     </ul>
-  {% endif %}
-{% endwith %}
-{% endblock %}
-{% block warehouse %}
-<h1>Create a warehouse</h1>
-<form action="{{url_for('create_warehouse')}}" method="POST">
-  Warehouse location: <br>
-  <input type="text" name="name_user_input" placeholder="Location">
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Storename
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">John's Store</a>
-      <a class="dropdown-item" href="#">Faris' Store</a>
-      <a class="dropdown-item" href="#">Boyke's Store</a>
-    </div>
-  </div>
-  <button type="submit">SUBMIT</button><br>
-  </form>
+    {% endif %}
+    {% endwith %}
+    {% endblock %}
+    {% block warehouse %}
+    <h1>Create a warehouse</h1>
+    <form action="{{url_for('create_warehouse')}}" method="POST">
+      Warehouse location: <br>
+      <input type="text" name="name_user_input" placeholder="Location">
+      <div class="dropdown">
+        <select name="store_id"> 
+          {% for store in stores %}
+            <option value="{{ store.id }}">{{ store.name }}</option>
+          {% endfor %}
+        </select>
+        <div >
+        </div>
+      </div>
+      <button type="submit">SUBMIT</button><br>
+    </form>
 
-
+  <!-- {% for store in stores %}
+  <h1>{{ store.name }}</h1>
+  {% endfor %} -->
   
 {% endblock %}
 
